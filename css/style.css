@@ -1,0 +1,231 @@
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: #737373;
+  font-size: 18px;
+  line-height: 1.15;
+  margin: 0;
+  padding: 0;
+}
+
+.overview{
+  background-attachment: fixed; /* Parallax effect */     
+  background-position: center;  /* Parallax effect */
+  background-repeat: no-repeat; /* Parallax effect */
+  background-size: cover;       /* Parallax effect */
+  color: white;
+  height: 400px;                /* Parallax effect */
+}
+
+.overview p{
+  color: white;
+  font-size: 24px;
+  padding: 0 100px;
+  text-align: center;
+}
+
+h1{
+  font-size: 50px;
+  line-height: 1;
+  padding: 50px 0;
+  text-align: center;
+}
+
+h2{
+  font-size: 32px;
+  line-height: 1.5;
+}
+
+nav li{
+  display:inline;
+  padding-right:20px;
+
+}
+
+nav a{
+  color: black;
+  font-weight: bold;
+  text-decoration: none; 
+}
+
+.skip a{
+  background: white;
+  left: 0;
+  padding: 6px;
+  -webkit-transition: top 1s ease-out;
+  transition: top 1s ease-out;
+  z-index: 1;
+}
+
+nav{
+  background-color: #ddd;
+  padding: 25px 0; 
+  text-align: left;
+}
+
+footer{
+  background-color: black;
+  color: white;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.text-block{
+  background-color: rgba(255, 255, 255, .8);
+  border: 10px solid black;
+  padding: 30px;
+}
+
+@media screen and (prefers-reduced-motion: reduce){
+  html{
+      scroll-behavior: auto; /* Removes scroll animation */
+  }
+
+  .skip a{
+    -webkit-transition: none; /* sets to default setting */
+    transition: none;        /* sets to default setting */
+   }
+
+  /*Turn off parallax*/
+  header{
+    background-attachment: initial;
+  }
+}
+
+/*YOUR CODE HERE*/
+/* PLEASE DO NOT REMOVE COMMENTS. THEY HELP US HELP YOU DEBUG. */
+
+/* STEP 1: Write selector/rule property to add an underline when
+links in the navigation are in the HOVER or FOCUS state. */
+
+/* <a> tag more specific to hover EACH link */
+nav a:hover{
+  text-decoration: underline;
+}
+/* :focus when using tab button and brings "SKIP TO MAIN CONTENT" into view */
+nav a:focus{
+  text-decoration: underline;
+}
+
+/* STEP 2A: Write selector/rule property to POSITION the default position for the SKIP class element. */
+div.skip a{
+  position: absolute;
+  top: -40px;
+}
+
+/* STEP 2B: Write selector/rule property to POSITION the SKIP class element when it is in FOCUS. */
+.skip a:focus{
+  top: 20px;
+}
+
+/* STEP 3: Write selector/rule property to STYLE ALL elements when in FOCUS. */
+
+/* '*' is the UNIVERSAL selector */
+*:focus{
+  border: solid 2px;
+}
+
+/* STEP 4: Write selector/rule property to STYLE the CONTAINER. */
+.container{
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-row-gap: 15px;
+}
+
+/* STEP 5: Write selector/rule property to ADD the BACKGROUND image to the FIRST DIV in the grid and place it in the grid. */
+.container div:first-child{
+  grid-column: 1 / -1;
+  background-image: url("../images/header.jpg");
+}
+
+/* STEPS 6 AND 7: Write the selector/rule properties to place the next elements in the next
+ FOUR ROWS in the grid. */
+
+/* This will be a lot of rules.... but be strategic and combine selectors. */
+
+/* grid-column: start, end */
+/* Text Boxes */
+.overview, .about, .method, .clients, .contact{
+  grid-column: 2 / span 1;
+}
+.about{
+  grid-row: 2 / span 1;
+}
+.method{
+  grid-row: 3 / span 1;
+}
+.clients{
+  grid-row: 4 / span 1;
+}
+.contact{
+  grid-row: 5 / span 1;
+}
+
+/* Images */
+.header-image{
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 1;
+  overflow: hidden;
+  max-height: 600px;
+}
+.about-image, .method-image, .clients-image, .contact-image{
+  grid-column: 1 / -1;
+  overflow: hidden;
+  max-height: 600px;
+}
+.about-image{
+  grid-row: 2 / span 1;
+}
+.method-image{
+  grid-row: 3 / span 1;
+}
+.clients-image{
+  grid-row: 4 / span 1;
+}
+.contact-image{
+  grid-row: 5 / span 1;
+}
+
+ /* STEP 8: Write the selector/rule property to style the .text-block class. */
+.text-block{
+  text-align: center;
+  /* justify-self = IMAGE horizontal alignment */
+  justify-self: center;
+  /* align-self = TEXT box alignment */
+  align-self: center;
+}
+
+/* ADD MEDIA QUERY HERE (FOR WEBSITE VIEW) */
+@media all and (min-width: 800px){
+
+/* STEP 9: Write the selector/rule property to style the NAV element. */
+nav{
+  text-align: right;
+  padding: 30px 0px 30px 0px;
+}
+/* STEP 10: Write the selector/rule property to update the .container class. */
+.container{
+  grid-template-columns: 50px auto 500px auto 50px;
+}
+
+/* STEPS 11 AND 12: Update the grid-column property of the grid's children (where-needed). */
+
+/* grid-column: start, end OR span # of columns */
+/* BEGIN @3RD COLUMN, SPAN 2 COLUMNS */
+.about, .clients, .method-image, .contact-image{
+  grid-column: 3 / span 2;
+}
+
+/* BEGIN @2ND COLUMNS, SPAN 2 COLUMNS --> RESULTS IN OVERLAP */
+.method, .contact, .about-image, .clients-image{
+  grid-column: 2 / span 2;
+}
+
+/* STEP 13: Write the selector/rule property to update the .text-block class. */
+ .text-block{
+   max-height: 250px;
+   overflow: scroll;
+ }
+}
