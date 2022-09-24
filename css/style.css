@@ -11,12 +11,12 @@ body{
 }
 
 .overview{
-  background-attachment: fixed; /* Parallax effect */     
-  background-position: center;  /* Parallax effect */
-  background-repeat: no-repeat; /* Parallax effect */
-  background-size: cover;       /* Parallax effect */
+  background-attachment: fixed; /* Parallax Effect */     
+  background-position: center;  /* Parallax Effect */
+  background-repeat: no-repeat; /* Parallax Effect */
+  background-size: cover;       /* Parallax Effect */
   color: white;
-  height: 400px;                /* Parallax effect */
+  height: 400px;                /* Parallax Effect */
 }
 
 .overview p{
@@ -80,7 +80,7 @@ footer{
 
 @media screen and (prefers-reduced-motion: reduce){
   html{
-      scroll-behavior: auto; /* Removes scroll animation */
+      scroll-behavior: auto; /* Removes scroll animation. */
   }
 
   .skip a{
